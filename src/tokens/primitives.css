@@ -55,6 +55,9 @@
   --yotto-white-60: rgb(255 255 255 / 0.6);
   --yotto-white-70: rgb(255 255 255 / 0.7);
 
+  /* ocean — photo scrim (Yotto-Designs › Welcome screen 91:86). NEW — pending approval, not yet in the DS Figma */
+  --yotto-ocean-0: #124b62;
+
   /* gradients (Figma paint styles). Stop positions are remapped from Figma's
      gradient transform: on a shape, Figma shows 28.6%→91.1% of the stop range. */
   --yotto-gradient-blue: linear-gradient(

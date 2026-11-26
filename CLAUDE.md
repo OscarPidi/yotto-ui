@@ -117,6 +117,7 @@ src/
     <Name>.test.tsx         # behaviour + accessibility basics
     index.ts
   icons/                    # icon-data.ts (shapes exported from Figma) + Icon.tsx — re-export from Figma, never draw by hand
+  screens/                  # reference app screens composed from the library (Storybook "Screens/*"); not exported, not in dist
   index.ts                  # public exports
 ```
 

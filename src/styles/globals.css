@@ -72,6 +72,9 @@
   --cream: var(--yotto-brand-white);
   --cream-foreground: var(--yotto-neutrals-10);
   --magenta: var(--yotto-magenta-0);
+  /* Scrim over full-bleed photos (Welcome screen) + text on it. Same in both modes. NEW — pending approval. */
+  --scrim: var(--yotto-ocean-0);
+  --scrim-foreground: var(--yotto-neutrals-80);
 
   --chart-1: var(--yotto-blue-0);
   --chart-2: var(--yotto-green-0);
@@ -135,6 +138,20 @@
   --shadow-float: var(--yotto-shadow-float);
   --shadow-tab: var(--yotto-shadow-tab);
 
+  /* motion: step transitions (animate-step-in-forward / animate-step-in-back) */
+  --ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-step-in-forward: step-in-forward 520ms var(--ease-glide) both;
+  --animate-step-in-back: step-in-back 520ms var(--ease-glide) both;
+
+  @keyframes step-in-forward {
+    from { opacity: 0; transform: translateX(40px) scale(0.98); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes step-in-back {
+    from { opacity: 0; transform: translateX(-40px) scale(0.98); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -161,6 +178,8 @@
   --color-cream: var(--cream);
   --color-cream-foreground: var(--cream-foreground);
   --color-magenta: var(--magenta);
+  --color-scrim: var(--scrim);
+  --color-scrim-foreground: var(--scrim-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);

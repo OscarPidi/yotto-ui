@@ -88,7 +88,7 @@ export function TopBar({
           aria-valuetext={`Step ${step} of ${totalSteps}`}
           className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted"
         >
-          <div className="h-full rounded-full bg-success transition-[width]" style={{ width: `${pct}%` }} />
+          <div className="h-full rounded-full bg-success transition-[width] duration-700 ease-glide motion-reduce:transition-none" style={{ width: `${pct}%` }} />
         </div>
         <span className="size-10 shrink-0" aria-hidden="true" />
       </header>

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { fn } from 'storybook/test'
 import { AppFlow } from './AppFlow'
+import { BoatDetailScreen } from './BoatDetailScreen'
+import { sampleBoats } from './boats'
 import { HomeScreen } from './HomeScreen'
 import { LoginScreen } from './LoginScreen'
 import { WelcomeScreen } from './WelcomeScreen'
@@ -28,7 +30,7 @@ type Story = StoryObj<typeof meta>
 
 /** Click through the whole journey: Welcome → Login → 10 questions → Home. */
 export const FullFlow: Story = {
-  render: () => <AppFlow onOnboardingComplete={fn()} />,
+  render: () => <AppFlow onOnboardingComplete={fn()} onScheduleVisit={fn()} />,
 }
 
 export const Welcome: Story = {
@@ -80,4 +82,16 @@ export const Home: Story = {
     design: { type: 'figma', url: 'https://www.figma.com/design/jl650cKEU7cndhv6pCe7Xk/Yotto-Designs?node-id=89-1017' },
   },
   render: () => <HomeScreen onViewAll={fn()} onSelectBoat={fn()} />,
+}
+
+export const BoatDetail: Story = {
+  parameters: {
+    design: { type: 'figma', url: 'https://www.figma.com/design/jl650cKEU7cndhv6pCe7Xk/Yotto-Designs?node-id=117-790' },
+  },
+  render: () => <BoatDetailScreen boat={sampleBoats[1]} onBack={fn()} onScheduleVisit={fn()} />,
+}
+
+export const BoatDetailNoRadar: Story = {
+  name: 'Boat Detail · no GPS radar',
+  render: () => <BoatDetailScreen boat={sampleBoats[2]} onBack={fn()} onScheduleVisit={fn()} />,
 }

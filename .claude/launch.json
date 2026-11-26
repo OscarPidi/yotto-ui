@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "storybook",
+      "runtimeExecutable": "/bin/zsh",
+      "runtimeArgs": ["-c", "export PATH=\"$HOME/.local/node/bin:$PATH\" DEVELOPER_DIR=/Library/Developer/CommandLineTools && pnpm storybook --ci --no-open"],
+      "port": 6006
+    }
+  ]
+}

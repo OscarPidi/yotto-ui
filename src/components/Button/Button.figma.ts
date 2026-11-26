@@ -25,9 +25,13 @@ const size = instance.getEnum('Size', {
   Small: 'sm',
 })
 
-// Type=Line is the low-emphasis family → outline. Line+Solid (cream) and
-// Line+Secondary (magenta) have no dedicated code variant yet (open question in PLAN.md).
-const variant = type === 'line' ? 'outline' : style
+// Type=Line: Primary → outline, Solid → cream, Secondary → magenta (decided 2026-11-26).
+let variant = style
+if (type === 'line') {
+  if (style === 'solid') variant = 'cream'
+  else if (style === 'secondary') variant = 'magenta'
+  else variant = 'outline'
+}
 const disabled = type === 'disabled'
 
 const labelLayer = instance.findText('CTA Text')

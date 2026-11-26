@@ -13,7 +13,7 @@ const meta = {
   tags: ['autodocs'],
   args: { children: 'CTA Text', variant: 'primary', size: 'lg', disabled: false },
   argTypes: {
-    variant: { control: 'inline-radio', options: ['primary', 'solid', 'secondary', 'outline'] },
+    variant: { control: 'inline-radio', options: ['primary', 'solid', 'secondary', 'outline', 'cream', 'magenta'] },
     size: { control: 'inline-radio', options: ['lg', 'sm'] },
     leftIcon: { control: false },
     rightIcon: { control: false },
@@ -30,6 +30,18 @@ export const Primary: Story = {}
 export const Solid: Story = { args: { variant: 'solid' } }
 export const Secondary: Story = { args: { variant: 'secondary' } }
 export const Outline: Story = { args: { variant: 'outline' } }
+export const Cream: Story = { args: { variant: 'cream' } }
+export const Magenta: Story = { args: { variant: 'magenta' } }
+
+/** Cream and magenta are made for brand backgrounds (photos, gradient). */
+export const OnBrandBackground: Story = {
+  render: () => (
+    <div className="flex gap-4 rounded-lg bg-brand-gradient p-8">
+      <Button variant="cream">CTA Text</Button>
+      <Button variant="magenta">CTA Text</Button>
+    </div>
+  ),
+}
 export const Small: Story = { args: { size: 'sm' } }
 export const Disabled: Story = { args: { disabled: true } }
 export const WithIcon: Story = { args: { leftIcon: <PlusIcon /> } }
@@ -38,8 +50,8 @@ export const WithIcon: Story = { args: { leftIcon: <PlusIcon /> } }
 export const Matrix: Story = {
   parameters: { layout: 'padded' },
   render: () => (
-    <div className="grid grid-cols-4 items-center gap-4 bg-background p-6 text-foreground">
-      {(['primary', 'solid', 'secondary', 'outline'] as const).map((variant) => (
+    <div className="grid grid-cols-6 items-center gap-4 bg-background p-6 text-foreground">
+      {(['primary', 'solid', 'secondary', 'outline', 'cream', 'magenta'] as const).map((variant) => (
         <div key={variant} className="flex flex-col items-start gap-3">
           <span className="text-body-md text-muted-foreground">{variant}</span>
           <Button variant={variant}>CTA Text</Button>

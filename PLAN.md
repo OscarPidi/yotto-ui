@@ -48,7 +48,7 @@ code through Code Connect.
 1. **Create semantic color variables** in `Semantics` (light + dark), named exactly as in the token table (section 4): `background`, `foreground`, `card`, `card-foreground`, `popover`, `popover-foreground`, `primary`, `primary-foreground`, `secondary`, `secondary-foreground`, `muted`, `muted-foreground`, `accent`, `accent-foreground`, `destructive`, `destructive-foreground`, `success`, `success-foreground`, `border`, `input`, `ring`.
    *Why it matters most:* these names become the CSS variables and Tailwind classes (`bg-primary`) that code and agents use. Today all 165 color links point straight at primitives (e.g. `neutrals/90`), so nothing can switch to dark.
 2. **Re-link component colors** (fills, strokes, text) to the semantic variables instead of primitives.
-3. **Split Button `Type`** — it mixes state (Active/Disabled) with look (Line = outline). New properties: `Variant` = Primary | Secondary | Solid | Outline, `Size` = Small | Large, `Disabled` = boolean.
+3. **Split Button `Type`** — it mixes state (Active/Disabled) with look (Line = outline). New properties: `Variant` = Primary | Solid | Secondary | Outline | Cream | Magenta, `Size` = Small | Large, `Disabled` = boolean.
 4. **Button width** — variants are fixed width with 119px side padding. Make them hug content with token padding.
 
 ### P1 — matters a lot for agents
@@ -67,7 +67,7 @@ code through Code Connect.
 14. Dark mode needs one more neutral between `neutrals/10` (#2e2e2e) and `neutrals/20` (#5e5d5d) for cards and muted surfaces — proposed `neutrals/15` = #3a3a3a.
 15. **Icons found during export:** `Arrow / Direction=Left` draws a right arrow and `Direction=Right` a left arrow (swap names); the second `Calendar` (23:45) is a location pin → rename `Location`; `Person` draws a smiley face → rename `Smile` or redraw; `Frame 1` is a minus-in-circle → `Remove`; partner logos (Benetti, Riva…) belong in a separate "Logos" set, not icons.
 16. **Input text layer names differ per variant** ("Input text" vs "Typin") — use one name, e.g. "Value".
-17. **New tokens added in code — add matching Figma variables/effect styles:** `brand-gradient-foreground`, `glass` (light: white 60%, dark: neutrals/15 at 60%), shadows `glow` (0 0 12 / 12%), `float` (0 0 17 / 10%, + 6px background blur), `tab` (0 0 4 / 24%).
+17. **New tokens added in code — add matching Figma variables/effect styles:** `brand-gradient-foreground`, `cream` (brand white), `cream-foreground` (neutrals/10), `magenta` (light magenta/0, dark magenta/20), `glass` (light: white 60%, dark: neutrals/15 at 60%), shadows `glow` (0 0 12 / 12%), `float` (0 0 17 / 10%, + 6px background blur), `tab` (0 0 4 / 24%).
 
 ---
 
@@ -124,20 +124,21 @@ Notes for the reviewer
 
 Note: publishing Code Connect to Figma needs a Figma Organization or Enterprise plan. Check before Stop 3.
 
-## 5b. Open questions from the Button (Stop 2 approved 2026-11-26 — answers pending)
-1. **Line + Solid (cream, brand white)** and **Line + Secondary (magenta outline)** have no matching code variant. Today Code Connect maps both to `outline`. Keep, drop, or add as variants (`cream`, `magenta-outline`) with new tokens?
-2. **Line + Primary** looks identical to **Active + Secondary** in Figma. In code, `outline` has a transparent background so it differs on coloured surfaces.
-3. **Disabled text**: Figma uses white text on grey (about 1.4:1 contrast). Code uses `muted-foreground` grey text, readable in light and dark.
-4. **Width**: Figma buttons are fixed width (201 / 131 / 148px); code buttons fit their label with 24px (lg) / 16px (sm) side padding. Use `className="w-full"` for full width.
-5. **New tokens added during the Button**: `brand-gradient-foreground` (white on gradients) and `shadow-glow` (0 0 12px black 12%, from Figma; disabled buttons use 29% in Figma, code uses 12% everywhere). Add matching Figma variable / effect style.
-6. **Code Connect publishing** needs a Figma Organization or Enterprise plan. Your teams are Starter/Professional, so `.figma.ts` files are written and validated locally but can't be published yet.
-7. **Surgena font**: not in the repo yet. It renders on this Mac because Surgena is installed locally; on other computers headings fall back to Inter until the .woff2 files are added to `src/fonts/`.
+## 5b. Design decisions after review (answered 2026-11-26)
 
-### Open questions from form controls and navigation
-8. **Pill colours**: Figma is mint text on light mint (~1.6:1 contrast). Code uses dark text on a mint tint. Keep, or pick a darker green for the text?
-9. **Input error text**: Figma colours the typed text red; code keeps it dark (red/0 on light grey is ~3:1) and only the border and icons turn red.
-10. **TopBar "Logo"** uses an image of the logo; code shows the Yotto mark (`IconYotto`) until a vector logo is provided. **"Date and time"** waits for DayIndicator.
-11. **Radio "On"** uses a check mark inside the circle (as in Figma) rather than the usual dot — confirmed intentional?
+| # | Question | Decision | Figma follow-up |
+|---|---|---|---|
+| 1 | Line + Solid (cream) and Line + Secondary (magenta outline) | **Added as Button variants `cream` and `magenta`**, with new tokens `cream`, `cream-foreground`, `magenta` (dark mode: `magenta/20`). Code Connect maps Line+Solid → cream, Line+Secondary → magenta. | Add `Cream` and `Magenta` to the new `Variant` property. |
+| 2 | Line + Primary looks like Active + Secondary | `outline` = transparent background with blue border; `secondary` = white fill with blue border. Outline is not for the blue gradient (unreadable there). | Make Line + Primary transparent when splitting the property. |
+| 3 | Disabled text | **Grey text on grey** (readable), not white. | Change disabled variants to `muted-foreground` text. |
+| 4 | Button width | **Fit the label**; `className="w-full"` for full width. | Fix-list item 4: hug contents. |
+| 5 | Tokens added while building | `brand-gradient-foreground`, `glass`, `cream`, `cream-foreground`, `magenta`, `shadow-glow`, `shadow-float`, `shadow-tab`. Disabled buttons use the same 12% glow as active ones. | Fix-list item 17: add as Figma variables / effect styles. |
+| 6 | Code Connect publishing | Needs a Figma Organization or Enterprise plan; files are ready and validated locally. | Owner decision on plan upgrade. |
+| 7 | Surgena font | Renders on the owner's Mac (installed locally); elsewhere headings fall back to Inter. | Owner adds licensed `.woff2` files to `src/fonts/`. |
+| 8 | Pill colours | **Dark text on a mint tint** (readable), not mint on mint. | Update Pill text colour in Figma. |
+| 9 | Input error | **Red border and icons only**; typed text stays dark. Show the error message below the field. | Change error text colour in Figma. |
+| 10 | TopBar logo | Use the Figma logo — but the file has **no vector version** (it's an image fill). Code keeps the Yotto mark (`IconYotto`) until an SVG exists. "Date and time" waits for DayIndicator. | Add the logo as a vector (SVG) component in Figma. |
+| 11 | Radio "On" mark | **Keep the check mark** inside the filled circle. | None. |
 
 ## 6. Verification
 - `pnpm typecheck`, `pnpm lint`, `pnpm test`, `pnpm build` pass after every component.
@@ -150,3 +151,4 @@ Note: publishing Code Connect to Figma needs a Figma Organization or Enterprise 
 - 2026-11-26 — Node.js 26.13.1 installed to ~/.local/node (verified checksum). Scaffold done (Vite 8, React 19, TS 7, Tailwind 4, Storybook 10, Vitest 5, oxlint, Code Connect 2). Button built; all checks pass. Stop 2 approved. Waiting on commit identity.
 - 2026-11-26 — Phase 4 done: 31 icons, Input, RadioGroup/Radio, SelectableOption, Pill, Tabs, MenuItem, NavigationMenu, TopBar (3 of 4 types), Foundations page. 29 tests pass; 9 Code Connect files validate; library build 68 KB JS + 91 KB CSS. Nothing committed yet (no commit identity).
 - 2026-11-26 — Stop 1 approved. Theme written by hand: `src/tokens/primitives.css`, `src/styles/globals.css` (not yet compiled or tested — waiting for Node.js). Still blocked on Node.js + Command Line Tools for the scaffold and git.
+- 2026-11-26 — Open questions answered (section 5b). Button gains `cream` and `magenta` variants; other answers keep current code. Repo live at https://github.com/OscarPidi/yotto-ui.

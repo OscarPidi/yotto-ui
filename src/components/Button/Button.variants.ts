@@ -21,6 +21,9 @@ export const buttonVariants = cva(
           'border border-primary bg-secondary text-secondary-foreground hover:bg-accent disabled:border-transparent',
         outline:
           'border border-primary bg-transparent text-primary hover:bg-accent disabled:border-transparent',
+        cream: 'bg-cream text-cream-foreground hover:bg-cream/85',
+        magenta:
+          'border border-magenta bg-glass text-magenta hover:bg-magenta/10 disabled:border-transparent',
       },
       size: {
         lg: 'h-11 px-6 text-h5 [&_svg]:size-5',
@@ -30,7 +33,7 @@ export const buttonVariants = cva(
     compoundVariants: [
       // Disabled look is the same for every variant (Figma: grey fill, no border).
       {
-        variant: ['primary', 'solid', 'secondary', 'outline'],
+        variant: ['primary', 'solid', 'secondary', 'outline', 'cream', 'magenta'],
         className: 'disabled:bg-muted disabled:text-muted-foreground',
       },
     ],

@@ -26,6 +26,8 @@ const colors: [token: string, use: string][] = [
   ['input', 'Input border'],
   ['ring', 'Focus outline'],
   ['glass', 'Frosted bars (tabs, bottom nav)'],
+  ['cream', 'Cream button (brand white)'],
+  ['magenta', 'Magenta button accent'],
 ]
 
 /** Semantic colours. Switch light/dark in the toolbar — every swatch updates. */

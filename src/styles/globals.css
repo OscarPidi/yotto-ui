@@ -68,6 +68,10 @@
   --brand-gradient-foreground: var(--yotto-neutrals-90);
   /* Frosted glass surfaces (tab bars, bottom nav) — Figma "White Transparent 60%". Added with navigation. */
   --glass: var(--yotto-white-60);
+  /* Brand accents for the cream and magenta Button variants (decided 2026-11-26) */
+  --cream: var(--yotto-brand-white);
+  --cream-foreground: var(--yotto-neutrals-10);
+  --magenta: var(--yotto-magenta-0);
 
   --chart-1: var(--yotto-blue-0);
   --chart-2: var(--yotto-green-0);
@@ -108,6 +112,7 @@
   --input: var(--yotto-neutrals-40);
   --ring: var(--yotto-blue-10);
   --glass: color-mix(in srgb, var(--yotto-neutrals-15) 60%, transparent);
+  --magenta: var(--yotto-magenta-20);
 
   --chart-1: var(--yotto-blue-10);
   --chart-2: var(--yotto-green-10);
@@ -153,6 +158,9 @@
   --color-ring: var(--ring);
   --color-brand-gradient-foreground: var(--brand-gradient-foreground);
   --color-glass: var(--glass);
+  --color-cream: var(--cream);
+  --color-cream-foreground: var(--cream-foreground);
+  --color-magenta: var(--magenta);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);

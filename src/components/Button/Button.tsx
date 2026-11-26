@@ -7,7 +7,8 @@ import { buttonVariants, type ButtonVariantProps } from './Button.variants'
  * Button — the main action element. Figma: "Button" (currently named "CTA").
  *
  * Figma property → prop
- *   Variant  Primary | Solid | Secondary | Outline → variant="primary" | "solid" | "secondary" | "outline"
+ *   Variant  Primary | Solid | Secondary | Outline | Cream | Magenta
+ *            → variant="primary" | "solid" | "secondary" | "outline" | "cream" | "magenta"
  *   Size     Large | Small                         → size="lg" | "sm"
  *   Disabled true | false                          → disabled
  *
@@ -15,7 +16,12 @@ import { buttonVariants, type ButtonVariantProps } from './Button.variants'
  *   primary   — the one most important action on a screen (brand gradient). Max one per view.
  *   solid     — strong action when a gradient would be too loud, or a second key action.
  *   secondary — supporting action next to a primary/solid button.
- *   outline   — low-emphasis action, also on coloured or image backgrounds.
+ *   outline   — low-emphasis action on light or dark page backgrounds (not on the blue gradient).
+ *   cream     — soft brand action on photos or the brand gradient (warm off-white fill, dark text).
+ *   magenta   — accent action in magenta (outline on frosted glass), e.g. promotions.
+ *
+ * Disabled always uses grey text on a grey fill (readable; differs from Figma's white text on purpose).
+ * Buttons fit their label; add `className="w-full"` for a full-width button.
  */
 export interface ButtonProps extends React.ComponentProps<'button'>, ButtonVariantProps {
   /** Icon shown before the label (e.g. `<IconAdd />`). Figma: "Left Icon". */

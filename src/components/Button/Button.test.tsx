@@ -27,6 +27,20 @@ describe('Button', () => {
     expect(cls).toContain('text-primary-foreground')
   })
 
+  it('has cream and magenta brand variants built from tokens', () => {
+    render(
+      <>
+        <Button variant="cream">Cream</Button>
+        <Button variant="magenta">Magenta</Button>
+      </>,
+    )
+    expect(screen.getByRole('button', { name: 'Cream' }).className).toContain('bg-cream')
+    expect(screen.getByRole('button', { name: 'Cream' }).className).toContain('text-cream-foreground')
+    const magenta = screen.getByRole('button', { name: 'Magenta' }).className
+    expect(magenta).toContain('border-magenta')
+    expect(magenta).toContain('text-magenta')
+  })
+
   it('does not fire onClick when disabled', async () => {
     const onClick = vi.fn()
     render(<Button disabled onClick={onClick}>No</Button>)

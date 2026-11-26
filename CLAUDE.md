@@ -54,6 +54,7 @@ Semantic color tokens (CSS variables → Tailwind classes). Full mapping to prim
 | `brand-gradient`, `brand-gradient-alt` | Brand moments only (hero, the gradient primary button). Not for regular surfaces. Classes: `bg-brand-gradient`, `bg-brand-gradient-alt`. |
 | `brand-gradient-foreground` | Text on a brand gradient (white in both modes). |
 | `glass` | Frosted bars (Tabs, NavigationMenu). Pair with `backdrop-blur-sm`. |
+| `cream` (+ `-foreground`), `magenta` | Brand accents for the cream and magenta Button variants. Not for page surfaces. |
 
 Typography: `font-heading` = Surgena (headings, display); `font-sans` = Inter (body).
 Type styles: `text-display-lg` 72/80, `text-display-sm` 44/48, `text-h1` 44/48, `text-h2` 36/40, `text-h3` 32/36, `text-h4` 28/32, `text-h5` 20/28, `text-h6` 16/20, `text-h7` 14/20, `text-body-xl` 16/20, `text-body-lg` 14/16, `text-body-md` 12/14, `text-body-sm` 10/14 (add `font-semibold` for the Heavy versions).
@@ -66,7 +67,7 @@ Import everything from `@yotto/ui`. Every component works in light and dark, and
 
 | Component | Figma name (current → proposed) | Status | Props and usage |
 |---|---|---|---|
-| `Button` | CTA → Button | **ready** | `variant`: `primary` (gradient, default — max one per view) \| `solid` (blue) \| `secondary` (white, blue border) \| `outline` (transparent, blue border) · `size`: `lg` (44px, default) \| `sm` (32px) · `disabled` · `leftIcon`, `rightIcon` · `asChild` (render a link with button styles) · all `<button>` props |
+| `Button` | CTA → Button | **ready** | `variant`: `primary` (gradient, default — max one per view) \| `solid` (blue) \| `secondary` (white, blue border) \| `outline` (transparent, blue border — not on the gradient) \| `cream` (off-white, dark text — for photos/gradient) \| `magenta` (magenta outline on glass — accents/promotions) · `size`: `lg` (44px, default) \| `sm` (32px) · `disabled` · `leftIcon`, `rightIcon` · `asChild` (render a link with button styles) · all `<button>` props. Fits its label; `className="w-full"` for full width. |
 | `Input` | Input text → Input | **ready** | `error` (red border + `aria-invalid`) · `leftIcon`, `rightIcon` · `containerClassName` (outer box) · all `<input>` props. Focus and filled styles are automatic. Always give a label or `aria-label`. |
 | `RadioGroup` + `Radio` | Radio Button → Radio | **ready** | Group: `value` / `defaultValue` / `onValueChange`, `aria-label`. Item: `value`, `disabled`. Wrap each Radio in a `<label>` with its text. |
 | `SelectableOption` | Single selectors → SelectableOption | **ready** | Full-width choice row; must sit inside `RadioGroup`. `value`, `icon`, `disabled`, children = label. |

@@ -1,0 +1,75 @@
+/*
+ * Yotto primitives — raw palette from Figma collection "Primitives".
+ * DO NOT use these in components. Components use semantic tokens from
+ * src/styles/globals.css (bg-primary, text-foreground, …).
+ * Scale: 0 = strongest/darkest, 50 (or 90 for neutrals) = lightest.
+ */
+:root {
+  /* blue */
+  --yotto-blue-0: #415dff;
+  --yotto-blue-10: #758aff;
+  --yotto-blue-20: #a1afff;
+  --yotto-blue-30: #c5cdff;
+  --yotto-blue-40: #e4e7ff;
+  --yotto-blue-50: #eef0ff;
+
+  /* red */
+  --yotto-red-0: #e96d83;
+  --yotto-red-10: #f699aa;
+  --yotto-red-20: #ffb8c5;
+  --yotto-red-30: #ffd1d9;
+  --yotto-red-40: #ffe4e9;
+  --yotto-red-50: #fff1f3;
+
+  /* magenta */
+  --yotto-magenta-0: #7061db;
+  --yotto-magenta-10: #8477e1;
+  --yotto-magenta-20: #968ae6;
+  --yotto-magenta-30: #988de5;
+  --yotto-magenta-40: #b1a8ee;
+  --yotto-magenta-50: #cfcaf3;
+
+  /* green */
+  --yotto-green-0: #8be2d5;
+  --yotto-green-10: #a0e7dd;
+  --yotto-green-20: #b3e7df;
+  --yotto-green-30: #c7f0e9;
+  --yotto-green-40: #defcf7;
+  --yotto-green-50: #f4fffd;
+
+  /* neutrals */
+  --yotto-neutrals-0: #000000;
+  --yotto-neutrals-10: #2e2e2e;
+  --yotto-neutrals-15: #3a3a3a; /* NEW — approved 2026-11-26, not yet in Figma */
+  --yotto-neutrals-20: #5e5d5d;
+  --yotto-neutrals-30: #878686;
+  --yotto-neutrals-40: #a4a4a4;
+  --yotto-neutrals-50: #bebebe;
+  --yotto-neutrals-60: #d7d7d7;
+  --yotto-neutrals-70: #e7e7e7;
+  --yotto-neutrals-80: #fafafa;
+  --yotto-neutrals-90: #ffffff;
+
+  /* brand white */
+  --yotto-brand-white: #f4f4ed;
+  --yotto-white-60: rgb(255 255 255 / 0.6);
+  --yotto-white-70: rgb(255 255 255 / 0.7);
+
+  /* gradients (Figma paint styles). Stop positions are remapped from Figma's
+     gradient transform: on a shape, Figma shows 28.6%→91.1% of the stop range. */
+  --yotto-gradient-blue: linear-gradient(
+    90deg,
+    #d9d9c0 -33%, #b7dcc9 -21.8%, #99e0d1 -9%, #87e2d6 0.6%, #81e3d8 8.6%,
+    #6ab5d3 27.8%, #4a75cd 58.2%, #3246c9 83.8%, #2429c6 103%, #1f1fc6 114%
+  );
+
+  /* elevation — not yet Figma effect styles */
+  --yotto-shadow-glow: 0 0 12px rgb(0 0 0 / 0.12);   /* buttons, inputs, selected options */
+  --yotto-shadow-float: 0 0 17px rgb(0 0 0 / 0.10);  /* floating glass bars (tabs, bottom nav) */
+  --yotto-shadow-tab: 0 0 4px rgb(0 0 0 / 0.24);     /* selected item inside a glass bar */
+  --yotto-gradient-red: linear-gradient(
+    90deg,
+    #1d34da 0%, #2a43e7 8%, #3b56f8 21%, #415dff 30%, #6b61df 38%,
+    #a166b7 50%, #c8699b 60%, #e06c89 68%, #e96d83 73%
+  );
+}

@@ -1,0 +1,201 @@
+/*
+ * Yotto theme — semantic tokens (approved mapping: PLAN.md section 4).
+ * Light is default; dark applies when <html class="dark">.
+ * Components use ONLY the Tailwind classes generated from @theme below
+ * (bg-primary, text-muted-foreground, border-border, ring-ring, …).
+ */
+@import "tailwindcss";
+@import "../tokens/primitives.css";
+
+/* Scan every component and story for class names (explicit, so new files are always picked up). */
+@source "../";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Inter (open source) — Latin subset only, keeps styles.css small. */
+@font-face {
+  font-family: "Inter Variable";
+  src: url("@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Surgena — licensed files added by the design owner to src/fonts/.
+   Until they exist, headings fall back to Inter. */
+@font-face {
+  font-family: "Surgena";
+  src: url("../fonts/Surgena-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Surgena";
+  src: url("../fonts/Surgena-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --radius: 12px;
+
+  --background: var(--yotto-neutrals-80);
+  --foreground: var(--yotto-neutrals-10);
+  --card: var(--yotto-neutrals-90);
+  --card-foreground: var(--yotto-neutrals-10);
+  --popover: var(--yotto-neutrals-90);
+  --popover-foreground: var(--yotto-neutrals-10);
+  --primary: var(--yotto-blue-0);
+  --primary-foreground: var(--yotto-neutrals-90);
+  --secondary: var(--yotto-neutrals-90);
+  --secondary-foreground: var(--yotto-blue-0);
+  --muted: var(--yotto-neutrals-70);
+  --muted-foreground: var(--yotto-neutrals-20);
+  --accent: var(--yotto-blue-50);
+  --accent-foreground: var(--yotto-blue-0);
+  --destructive: var(--yotto-red-0);
+  --destructive-foreground: var(--yotto-neutrals-10);
+  --success: var(--yotto-green-0);
+  --success-foreground: var(--yotto-neutrals-10);
+  --border: var(--yotto-neutrals-60);
+  --input: var(--yotto-neutrals-20);
+  --ring: var(--yotto-blue-0);
+  --brand-gradient: var(--yotto-gradient-blue);
+  --brand-gradient-alt: var(--yotto-gradient-red);
+  /* Text on the gradients — white in both modes (added at Button build, pending approval at Stop 2) */
+  --brand-gradient-foreground: var(--yotto-neutrals-90);
+  /* Frosted glass surfaces (tab bars, bottom nav) — Figma "White Transparent 60%". Added with navigation. */
+  --glass: var(--yotto-white-60);
+
+  --chart-1: var(--yotto-blue-0);
+  --chart-2: var(--yotto-green-0);
+  --chart-3: var(--yotto-magenta-0);
+  --chart-4: var(--yotto-red-0);
+  --chart-5: var(--yotto-blue-20);
+
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+.dark {
+  --background: var(--yotto-neutrals-10);
+  --foreground: var(--yotto-neutrals-80);
+  --card: var(--yotto-neutrals-15);
+  --card-foreground: var(--yotto-neutrals-80);
+  --popover: var(--yotto-neutrals-15);
+  --popover-foreground: var(--yotto-neutrals-80);
+  --primary: var(--yotto-blue-10);
+  --primary-foreground: var(--yotto-neutrals-0);
+  --secondary: var(--yotto-neutrals-15);
+  --secondary-foreground: var(--yotto-blue-10);
+  --muted: var(--yotto-neutrals-15);
+  --muted-foreground: var(--yotto-neutrals-40);
+  --accent: var(--yotto-blue-0);
+  --accent-foreground: var(--yotto-neutrals-90);
+  --destructive: var(--yotto-red-10);
+  --destructive-foreground: var(--yotto-neutrals-0);
+  --success: var(--yotto-green-10);
+  --success-foreground: var(--yotto-neutrals-0);
+  --border: var(--yotto-neutrals-20);
+  --input: var(--yotto-neutrals-40);
+  --ring: var(--yotto-blue-10);
+  --glass: color-mix(in srgb, var(--yotto-neutrals-15) 60%, transparent);
+
+  --chart-1: var(--yotto-blue-10);
+  --chart-2: var(--yotto-green-10);
+  --chart-3: var(--yotto-magenta-10);
+  --chart-4: var(--yotto-red-10);
+  --chart-5: var(--yotto-blue-30);
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Surgena", "Inter Variable", ui-sans-serif, sans-serif;
+
+  /* spacing: Tailwind default 4px step matches Figma Number/4px…44px (p-1 … p-11) */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* elevation: shadow-glow (Figma buttons) */
+  --shadow-glow: var(--yotto-shadow-glow);
+  --shadow-float: var(--yotto-shadow-float);
+  --shadow-tab: var(--yotto-shadow-tab);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand-gradient-foreground: var(--brand-gradient-foreground);
+  --color-glass: var(--glass);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Brand gradients: bg-brand-gradient, bg-brand-gradient-alt */
+@utility bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
+@utility bg-brand-gradient-alt {
+  background-image: var(--brand-gradient-alt);
+}
+
+/* Type scale — mirrors Figma text styles. Heavy body = add font-semibold. */
+@utility text-display-lg { font-family: var(--font-heading); font-weight: 700; font-size: 72px; line-height: 80px; }
+@utility text-display-sm { font-family: var(--font-heading); font-weight: 700; font-size: 44px; line-height: 48px; }
+@utility text-h1 { font-family: var(--font-heading); font-weight: 700; font-size: 44px; line-height: 48px; }
+@utility text-h2 { font-family: var(--font-heading); font-weight: 700; font-size: 36px; line-height: 40px; }
+@utility text-h3 { font-family: var(--font-heading); font-weight: 700; font-size: 32px; line-height: 36px; }
+@utility text-h4 { font-family: var(--font-heading); font-weight: 700; font-size: 28px; line-height: 32px; }
+@utility text-h5 { font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; }
+@utility text-h6 { font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 20px; }
+@utility text-h7 { font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 20px; }
+@utility text-body-xl { font-family: var(--font-sans); font-size: 16px; line-height: 20px; }
+@utility text-body-lg { font-family: var(--font-sans); font-size: 14px; line-height: 16px; }
+@utility text-body-md { font-family: var(--font-sans); font-size: 12px; line-height: 14px; }
+@utility text-body-sm { font-family: var(--font-sans); font-size: 10px; line-height: 14px; }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}

@@ -12,5 +12,5 @@
     "types": ["vite/client"]
   },
   "include": ["src"],
-  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx", "src/**/*.figma.ts", "src/test"]
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx", "src/**/*.figma.ts", "src/test", "src/screens"]
 }
